@@ -25,8 +25,8 @@
                     <td>{{ $train->company }}</td>
                     <td>{{ $train->departure_station }}</td>
                     <td>{{ $train->arrival_station }}</td>
-                    <td>{{ $train->departure_time }}</td>
-                    <td>{{ $train->arrival_time }}</td>
+                    <td>{{ \Carbon\Carbon::parse($train->departure_time)->locale('it_IT')->isoFormat('LLLL'); }}</td>
+                    <td>{{ \Carbon\Carbon::parse($train->arrival_time)->locale('it_IT')->isoFormat('LLLL'); }}</td>
                     <td>{{ $train->train_id }}</td>
                     <td>{{ $train->n_carriages }}</td>
                     <td>{{ $train->in_time === 1 ? 'Sì' : 'No' }}</td>
