@@ -28,8 +28,12 @@ class TrainTableSeeder extends Seeder
             }
             $newTrain->train_id = $faker->numberBetween(100000, 999999);
             $newTrain->n_carriages = $faker->numberBetween(1, 18);
-            $newTrain->in_time = $faker->numberBetween(0, 1);
             $newTrain->cancelled = $faker->numberBetween(0, 1);
+            if ($newTrain->cancelled) {                 //Il treno non è in orario se cancellato
+                $newTrain->in_time = 0;
+            } else {
+                $newTrain->in_time = $faker->numberBetween(0, 1);
+            }
             $newTrain->save();
         }
     }
